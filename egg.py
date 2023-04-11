@@ -29,7 +29,7 @@ def googlesheet():
     auth_file = ".json"
     gc = pygsheets.authorize(service_file = auth_file)   
     # setting sheet
-    sheet_url = "https://docs.google.com/spreadsheets/d/1_AmWY1yVhH6i-o4wDe5akbJMB28vzTWuVEnM3YKIMwM/" 
+    sheet_url = "https://docs.google.com/spreadsheets/d/-" 
     sheet = gc.open_by_url(sheet_url)
     sheet_test01 = sheet.worksheet_by_title("工作表1")
     O2 = sheet_test01.cell('O2')  #今日產蛋
