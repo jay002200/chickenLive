@@ -6,13 +6,13 @@
 ```
 https://www.youtube.com/@user-tn1lb5cg3o
 ```
-<img src="https://github.com/jay002200/chickenLive/blob/img/live.png">
+<img src="https://github.com/jay002200/chickenLive/blob/main/live.png">
 
 
 ### 抓取產蛋量：
 從Google Sheet抓取產蛋量，顯示在畫面上，crontab定時30分鐘抓一次。
 使用opencv將數量寫在圖片上。  
-<img src="https://github.com/jay002200/chickenLive/blob/img/egg.jpg">
+<img src="https://github.com/jay002200/chickenLive/blob/main/egg.jpg">
 
 ### 天氣
 使用Wttr.in，使用crontab，定時執行並存成圖片。
