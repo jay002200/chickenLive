@@ -1,0 +1,48 @@
+import cv2
+from PIL import ImageFont, ImageDraw, Image
+import numpy as np
+import pygsheets
+
+
+
+def make_egg_pic(text1,text2,text3):
+    text = "今日蛋蛋:"
+    text += text1
+    allegg = "全部蛋蛋:"
+    allegg += text2
+    time = "更新時間:\n"
+    time += text3
+    img = cv2.imread("blackboard.png")
+    imgPil = Image.fromarray(img)
+    fontPath = "./font.ttf"
+    font = ImageFont.truetype(fontPath,110)
+    draw = ImageDraw.Draw(imgPil)
+    draw.text((93,37),text,font=font,fill=(0,0,255))
+    draw.text((93,152),allegg,font=font,fill=(0,0,255))
+    font = ImageFont.truetype(fontPath,60)
+    draw.text((93,288),time,font=font,fill=(0,0,255))
+    img = np.array(imgPil)
+    path = "egg.jpg"
+    cv2.imwrite(path,img)
+    
+def googlesheet():
+    auth_file = ".json"
+    gc = pygsheets.authorize(service_file = auth_file)   
+    # setting sheet
+    sheet_url = "https://docs.google.com/spreadsheets/d/1_AmWY1yVhH6i-o4wDe5akbJMB28vzTWuVEnM3YKIMwM/" 
+    sheet = gc.open_by_url(sheet_url)
+    sheet_test01 = sheet.worksheet_by_title("工作表1")
+    O2 = sheet_test01.cell('O2')  #今日產蛋
+    P2 = sheet_test01.cell('P2')  #總蛋量
+    Q2 = sheet_test01.cell('Q2')  #更新時間
+    data = []
+    data.append(O2.value)
+    data.append(P2.value)
+    data.append(Q2.value)
+    return data
+
+data = googlesheet()
+todayegg = str(data[0])
+allegg = str(data[1])
+time = str(data[2])
+make_egg_pic(todayegg,allegg,time)
