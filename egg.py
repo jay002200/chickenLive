@@ -26,17 +26,21 @@ def make_egg_pic(text1,text2,text3):
     cv2.imwrite(path,img)
     
 def googlesheet():
-    #全新的一天 初始化產蛋
+    
     now = datetime.datetime.now(tz=datetime.timezone(datetime.timedelta(hours=8)))
     hours = now.strftime('%H')
-    if hours == "00":
-    	sheet_test01.update_value("O2","0")
+    
     auth_file = "/home/-"
     gc = pygsheets.authorize(service_file = auth_file)   
     # setting sheet
     sheet_url = "https://docs.google.com/-" 
     sheet = gc.open_by_url(sheet_url)
     sheet_test01 = sheet.worksheet_by_title("工作表1")
+    
+    #new day new egg
+    if hours == "00":
+    	sheet_test01.update_value("O2","0")
+     
     O2 = sheet_test01.cell('O2')  #今日產蛋
     P2 = sheet_test01.cell('P2')  #總蛋量
     Q2 = sheet_test01.cell('Q2')  #更新時間
