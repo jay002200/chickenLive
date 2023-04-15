@@ -20,6 +20,18 @@ https://www.youtube.com/@user-tn1lb5cg3o
 wget -N wttr.in/zhunan_0q_lang=zh.png -O zhunan.png
 ```
 
+### 聊天室指令控制
+在聊天室輸入指令，可控制鏡頭位置，和小米電燈。
+目前指令:
+```  
+!closelight or !關燈  
+!openlight or !開燈  
+!上 or !up  
+!下 or !down  
+!右 or !right  
+!左 or !left  
+```
+
 ### device
 synology vvm (Ubuntu 22.04)  
 Cam: Tp-link C210
